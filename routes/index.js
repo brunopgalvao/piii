@@ -7,6 +7,7 @@ router.get('/', (req, res) => res.send('This is root!'))
 
 router.post('/sign-up', controllers.signUp)
 router.post('/sign-in', controllers.signIn)
+router.get('/verify', controllers.verifyUser)
 router.post('/change-password', controllers.changePassword)
 
 router.get('/items', controllers.getAllItems)

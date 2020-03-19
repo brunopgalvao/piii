@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getItems } from '../services/items'
+import { verifyUser } from '../services/auth'
 import Routes from '../routes'
 import Header from '../screens/Header'
 
@@ -13,11 +14,11 @@ export default class Container extends Component {
     }
 
     async componentDidMount() {
-        try {
-            const items = await getItems()
-            this.setState({ items })
-        } catch (err) {
-            console.error(err)
+        const items = await getItems()
+        this.setState({ items })
+        const user = await verifyUser();
+        if (user) {
+            this.setState({ user })
         }
     }
 
